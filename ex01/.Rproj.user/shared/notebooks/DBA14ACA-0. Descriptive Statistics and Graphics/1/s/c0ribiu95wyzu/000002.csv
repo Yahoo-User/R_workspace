@@ -1,0 +1,5 @@
+"0","funcs <- data.frame("
+"0","  seq = seq(1:10),"
+"0","  Functions = c(""mean()"", ""sd()"", ""var()"", ""min()"", ""maximum()"", ""median()"", ""range()"", ""quantile()"", ""summary()"", ""IQR()""),"
+"0","  Description = c(""Mean"", ""Standard deviation"", ""Variance"", ""Minimum"", ""Maximum"", ""Median"", ""Range of values (minimum and maximum)"", ""Sample quantiles"", ""Generic function"", ""Interquartile range"")"
+"0",")"

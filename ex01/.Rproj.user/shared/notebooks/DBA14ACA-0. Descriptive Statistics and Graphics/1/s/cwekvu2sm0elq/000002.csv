@@ -1,0 +1,5 @@
+"0","# Compute descriptive statistics"
+"0","library(pastecs)"
+"0",""
+"0","res <- stat.desc(my_data[, -5])"
+"0","round(res, 2)"

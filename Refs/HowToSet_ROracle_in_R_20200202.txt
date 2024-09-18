@@ -1,0 +1,92 @@
+
+* Oracle ROracle R package installation *
+
+0. Pre-requisite
+	a. RTools installation after RStudio installation
+	b. install DBI package
+	c. install odbc package
+	d. Putting all wallet extracted files into Oracle Instant Client install folder/network/admin (***)
+	e. Putting Oracle Instant folder into the front of any PATH variables (***)
+
+
+1. Install Oracle Client and others
+	a. instantclient-basic-windows.x64-12.2.0.1.0.zip
+	b. instantclient-sdk-windows.x64-12.2.0.1.0.zip
+	c. instantclient-odbc-windows.x64-12.2.0.1.0-2.zip
+	d. instantclient-jdbc-windows.x64-12.2.0.1.0.zip
+
+
+2. set Oracle-related Environment Variables on windows 7
+	a. Removing ORACLE_BASE variable definitely due to the Oracle Instant Client		
+			F:\app\oracle
+	b. Removing ORACLE_HOME variable definitely due to the Oracle Instant Client
+			F:\app\oracle\product\12.2.0\dbhome_1
+	c. OCI_LIB64		F:\app\instantclient_12_2
+	d. OCI_INC			F:\app\oracle\virtual\product\12.2.0\dbhome_1\oci\include
+
+
+	> Sys.getenv('ORACLE_HOME')
+	[1] "F:\\app\\oracle\\product\\12.2.0\\dbhome_1"
+	> Sys.getenv('OCI_LIB')
+	[1] ""
+	> Sys.getenv('OCI_LIB64')
+	[1] "F:\\app\\instantclient_12_2"
+	> Sys.getenv('OCI_INC')
+	[1] "F:\\app\\instantclient_12_2\\sdk\\include"
+
+
+3. install ROracle R packages
+
+	> install.packages('ROracle', type = 'source', dependencies = T)
+
+
+4. install RODBC R package
+
+	> install.packages('RODBC', type = 'source', dependencies = T)
+
+
+5. install RJDBC R package
+
+	a. install JDK or JRE and set JAVA_HOME variable on windows 7
+
+		> Sys.getenv('JAVA_HOME')
+
+	b. install dependent packages: rJava
+
+		> install.packages('rJava', dependencies = T)
+
+	c. install RJDBC package
+
+		> install.packages('RJDBC', type = 'source', dependencies = T)
+
+
+6. Examples using ROracle package
+
+	> library(ROracle)
+
+	> oraDrv <- dbDriver('Oracle')
+	> oraDrv
+
+	> oraConn <- dbConnect(oraDrv, dbname='atp20191201_high', username='SCOTT', password='Oracle1234567')
+	> oraConn
+
+	> iris
+
+	> dbWriteTable(oraConn, 'IRIS', iris)
+
+	> df_iris <- dbReadTable(oraConn, 'IRIS')
+
+	> str(df_iris)
+	> View(df_iris)
+
+	> dbDisconnect(oraConn)
+
+	
+7. Regiser ODBC data source into R connections pane
+
+	> library(DBI)
+	> con <- dbConnect(odbc::odbc(), "DSN.ACORN.HR", timeout = 10, username="HR", password="hr")
+	에러: nanodbc/nanodbc.cpp:983: IM006: [Oracle][ODBC][Ora]ORA-01005: 널 비밀번호가 입력되었습니다. 로? [Microsoft][ODBC 드라이버 관리자] 드라이버의 SQLSetConnectA
+
+	> library(DBI)
+	> con <- dbConnect(odbc::odbc(), "DSN.ACORN.HR", pwd="hr", timeout = 10) # pwd 인자로 암호제공하면 됨!!!! (*****)

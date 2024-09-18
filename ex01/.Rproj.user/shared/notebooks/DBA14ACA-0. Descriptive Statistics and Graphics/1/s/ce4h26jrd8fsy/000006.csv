@@ -1,0 +1,7 @@
+"0","# Store the data in the variable my_data"
+"0","my_data <- iris"
+"0",""
+"0","library(dplyr)"
+"0",""
+"0","set.seed(1234)"
+"0","sample_n(tbl = my_data, size = 10, replace = F)"

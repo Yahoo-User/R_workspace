@@ -1,0 +1,4 @@
+"0",""
+"0","require(ggpubr)"
+"0","ggqqplot(my_data$cty, color = 'red')"
+"0",""

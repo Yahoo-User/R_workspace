@@ -1,0 +1,19 @@
+"0","install.packages(""pastecs"")"
+"2","URL 'https://cran.rstudio.com/bin/windows/contrib/3.6/pastecs_1.3.21.zip'을 시도합니다
+"
+"2","Content type 'application/zip'"
+"2"," length 482005 bytes (470 KB)
+"
+"2","downloaded 470 KB
+
+"
+"1","package ‘pastecs’ successfully unpacked and MD5 sums checked
+"
+"1","
+"
+"1",""
+"1","The downloaded binary packages are in
+	C:\Users\cherr\AppData\Local\Temp\RtmpcbbQ2E\downloaded_packages"
+"1",""
+"1","
+"
